@@ -34,7 +34,6 @@ jobs:
         with:
           node-version-file: ".nvmrc"
           cache: "pnpm"
-          cache-dependency-path: ${{ env.BUILD_PATH }}/package-lock.json
 
       - name: Setup Pages
         id: pages
