@@ -1,0 +1,51 @@
+---
+interface Props {
+    links: {
+        href: string;
+        title: string;
+    }[];
+}
+
+const { links } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+
+<nav class="nav">
+    {
+        links.map((page) => (
+            <a href={page.href} class={pathname === page.href ? "active" : ""}>
+                {page.title}
+            </a>
+        ))
+    }
+</nav>
+
+<style>
+    .nav {
+        background-color: #2f343e; /* Darker background color */
+        overflow: hidden;
+        padding: 0.8rem; /* Adjusted padding for better visibility */
+        border-radius: 12px;
+    }
+
+    .nav a {
+        float: left;
+        color: white;
+        text-align: center;
+        padding: 0.8rem;
+        text-decoration: none;
+        font-size: 16px; /* Increased font size */
+        border-radius: 8px;
+        margin-right: 0.5rem;
+        transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .nav a:hover {
+        background-color: #3a4050; /* Darker background color on hover */
+        color: #ffffff; /* Text color on hover */
+    }
+
+    .nav a.active {
+        background-color: #4a5164; /* Active page background color */
+    }
+</style>
